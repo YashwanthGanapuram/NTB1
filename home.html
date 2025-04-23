@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Dining Experience</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ac42c3b1f7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="page.js" defer></script>
+    <style>
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('push https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--light-text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .feature-section {
+            padding: 5rem 0;
+            background-color: var(--light-text);
+        }
+
+        .feature-card {
+            background: var(--light-text);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .feature-description {
+            color: var(--text-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .menu-preview {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 5rem 0;
+        }
+
+        .menu-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem;
+            color: var(--light-text);
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .menu-price {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .reservation-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 0;
+            color: var(--light-text);
+        }
+
+        .reservation-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--light-text);
+            padding: 1rem;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary-color);
+            color: var(--light-text);
+        }
+
+        /* Navbar Logout Button Styles */
+        .logout-btn {
+            background-color: #dc3545;
+            color: white !important;
+            border-radius: 20px;
+            padding: 8px 20px;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        .logout-btn i {
+            margin-right: 5px;
+        }
+
+        /* Footer Styles */
+        .footer-section {
+            background-color: #183b56;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .footer-heading {
+            color: #e67e22;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #e67e22;
+        }
+
+        .footer-text {
+            color: #9aa5b1;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #9aa5b1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #e67e22;
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            color: #e67e22;
+            margin-right: 15px;
+            font-size: 18px;
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .social-icons a:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9aa5b1;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-section {
+                padding: 40px 0 20px;
+            }
+
+            .footer-heading {
+                margin-top: 30px;
+            }
+        }
+
+        /* Add these styles to your existing styles */
+        .table-booking-info {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-width: 300px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .table-booking-info h3 {
+            color: #e67e22;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-booking-info p {
+            margin-bottom: 10px;
+            color: #183b56;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .table-booking-info i {
+            color: #e67e22;
+            width: 20px;
+        }
+
+        .table-booking-info .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .table-booking-info .close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .table-booking-info {
+                position: static;
+                margin: 20px auto;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img alt="img" src="https://i.imghippo.com/files/XYnh8466ZYM.png" class="food-munch-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link active" id="navItem1" href="why.html">
+                        Why Choose Us?
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <a class="nav-link" href="explore.html" id="navItem2">Explore Menu</a>
+                    <a class="nav-link" href="payment.html" id="navItem3">Delivery & Payment</a>
+                    <a class="nav-link" href="cart.html" id="navItem4">Cart</a>
+                    <a class="nav-link logout-btn" href="login.html" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="banner-section-bg-container d-flex justify-content-center flex-column">
+        <div class="text-center">
+        <h1 id="cartName" class=" mb-3 text-white p-0" style="font-family: 'Roboto';" ></h1>
+            <h1 id="TableId" class="banner-heading mb-3">Get Delicious Food Anytime</h1>
+            <p class="banner-caption mb-4">Eat Smart & Healthy</p>
+            <a class="order-now" href="explore.html" id="order-now">
+                <button id="order" class="custom-button">Order Now</button>
+            </a>
+            <a class="Table-Booking" href="table.html" id="Table-Booking">
+                <button id="tableThis" class="custom-outline-button">Table Booking</button>
+            </a>
+        </div>
+    </div>
+    
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <img src="https://i.imghippo.com/files/XYnh8466ZYM.png" class="footer-logo" alt="Food Munch Logo">
+                    <p class="footer-text">
+                        Food Munch is your destination for delicious and authentic cuisine. We serve the best quality food with exceptional service.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="why.html">Why Choose Us</a></li>
+                        <li><a href="explore.html">Explore Menu</a></li>
+                        <li><a href="payment.html">Delivery & Payment</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Food Street, City, Country</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+1 234 567 890</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@foodmunch.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sun: 10:00 AM - 10:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Food Munch. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add this HTML after your navigation bar -->
+    <div id="tableBookingInfo" class="table-booking-info" style="display: none;">
+        <button class="close-btn" onclick="hideTableBookingInfo()">
+            <i class="fas fa-times"></i>
+        </button>
+        <h3>
+            <i class="fas fa-utensils"></i>
+            Your Table Booking
+        </h3>
+        <p>
+            <i class="fas fa-chair"></i>
+            Table: <span id="bookingTableNo"></span>
+        </p>
+        <p>
+            <i class="fas fa-calendar"></i>
+            Date: <span id="bookingDate"></span>
+        </p>
+        <p>
+            <i class="fas fa-clock"></i>
+            Time: <span id="bookingTime"></span>
+        </p>
+        <p>
+            <i class="fas fa-users"></i>
+            Guests: <span id="bookingGuests"></span>
+        </p>
+    </div>
+
+    <!-- Add this script at the end of your body tag -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayTableBookingInfo();
+        });
+
+        function displayTableBookingInfo() {
+            const bookingInfo = JSON.parse(localStorage.getItem('currentTableBooking'));
+            if (bookingInfo) {
+                document.getElementById('bookingTableNo').textContent = bookingInfo.tableNo;
+                document.getElementById('bookingDate').textContent = new Date(bookingInfo.date).toLocaleDateString();
+                document.getElementById('bookingTime').textContent = bookingInfo.time;
+                document.getElementById('bookingGuests').textContent = bookingInfo.guests;
+                document.getElementById('tableBookingInfo').style.display = 'block';
+            }
+        }
+
+        function hideTableBookingInfo() {
+            document.getElementById('tableBookingInfo').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
